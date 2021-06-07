@@ -71,11 +71,13 @@ public class SignIn_Page {
 		Screenshots.takeScreenshot(driver, "User entered password as ");
 		test.log(Status.INFO, "User entered password as "+ input_Password);
 		Log.info("User entered password as "+ input_Password);
+		Thread.sleep(5000);
 
     }
 	
 	public void click_SignIn_Button() throws IOException, InterruptedException {
 		SignIn_Button.get(1).click();
+		Thread.sleep(5000);
 		Screenshots.takeScreenshot(driver, "User clicked login button");
 		test.log(Status.INFO, "User clicked login button");
 		Log.info("User clicked login button");		

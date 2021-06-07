@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
+
 
 
 import com.sentient.poc.helper.*;
@@ -24,7 +24,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import javax.swing.*;
 
-public class Script_01_pageobjects {
+public class Organisation_Manage_Users_Page {
     private WebDriver driver;
     private WaitTypes applyWait;
     private ExtentTest test;
@@ -39,7 +39,7 @@ public class Script_01_pageobjects {
 
     public String selectText1 = "Organisation";
 
-    public Script_01_pageobjects(WebDriver driver, ExtentTest test) {
+    public Organisation_Manage_Users_Page(WebDriver driver, ExtentTest test) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         this.applyWait = new WaitTypes(driver);
@@ -141,6 +141,7 @@ public class Script_01_pageobjects {
     public int verify_expectedUserId() {
         String email=JsonUtils.getData(DefineConstants.Add_User, "Email");
         WebElement expected = driver.findElement(By.xpath("//td[contains(text(),'"+email+"')]"));
+        System.out.println(expected.getText());
         if (expected.getText().equals(JsonUtils.getData(DefineConstants.Add_User, "Email"))) {
             System.out.println("Expected Result");
             flag = 1;
@@ -177,7 +178,8 @@ public class Script_01_pageobjects {
         Log.info("User entered email address as " + input_userID);
     }
 
-    public void select_group() {
+    public void select_group() throws InterruptedException {
+        Thread.sleep(5000);
         for (WebElement a : groups) {
             if (a.getText().equals("Select Predefined Groups")) {
                 a.click();
@@ -186,7 +188,13 @@ public class Script_01_pageobjects {
 
         }
 
+
+
         //user.isSelected();
+    }
+
+    public void wait_for_element(int t1) throws InterruptedException {
+        Thread.sleep(t1);
     }
 
     public void select_user() {
@@ -203,20 +211,23 @@ public class Script_01_pageobjects {
         //dropDown.moveToElement(driver,account_details);
         organisation.click();
         //manage_user.click();
+        Thread.sleep(5000);
 
     }
 
-    public String click_on_manager_user() {
+    public String click_on_manager_user() throws InterruptedException {
+        Thread.sleep(5000);
         manage_user.click();
         expectedResult = manage_user.getText();
         return expectedResult;
 
     }
 
-    public void add_New_User() {
+    public void add_New_User() throws InterruptedException {
         for (WebElement a : add_User) {
             if (a.getText().equals("Add User")) {
                 a.click();
+                Thread.sleep(5000);
                 break;
             }
         }
