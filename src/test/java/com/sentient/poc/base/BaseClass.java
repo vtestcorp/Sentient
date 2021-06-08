@@ -62,8 +62,9 @@ public class BaseClass {
         extent.attachReporter(htmlReporter);
         Thread.sleep(1000);
         if (browser.equalsIgnoreCase("chrome")) {
+            DefineProperties defineBrowser = new DefineProperties(browser);
             // defineProperties defineBrowser = new defineProperties(browser);
-            WebDriverManager.chromedriver().setup();
+          //  WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             /*
              * options.addArguments("excludeSwitches",

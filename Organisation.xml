@@ -7,7 +7,7 @@
     </listeners>
 
     <test name="Organisation Role">
-        <parameter name="browserType" value="firefox"/>
+        <parameter name="browserType" value="chrome"/>
         <classes>
 
             <class name="com.sentient.poc.testcases.TC_01_Organisation_Page_UI"/>
