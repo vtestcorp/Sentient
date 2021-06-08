@@ -68,7 +68,7 @@ public class Organisation_Page {
 	 */
 	public boolean verify_Logo_Of_OrganisationPage() {
 		boolean value = logo.getAttribute("style").contains(("https://dev-platform.sentient.io/img/sentientlogo.cab51565.png"));
-		System.out.println(value);
+		//System.out.println(value);
 		return value;
 	
      }
