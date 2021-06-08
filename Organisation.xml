@@ -11,11 +11,11 @@
         <classes>
 
             <class name="com.sentient.poc.testcases.TC_01_Organisation_Page_UI"/>
-            <class name="com.sentient.poc.testcases.TC_03_Verify_Add_Group_Under_Manage_Groups_Tab"/>
+           <!-- <class name="com.sentient.poc.testcases.TC_03_Verify_Add_Group_Under_Manage_Groups_Tab"/>
             <class name="com.sentient.poc.testcases.TC_02_Verify_Add_User_Under_Manage_Users_Tab"/>
             <class name="com.sentient.poc.testcases.TC_04_Verify_Delete_Existing_User_Under_Manage_Users_Tab"/>
             <class name="com.sentient.poc.testcases.TC_05_Verify_Edit_User_Under_Organisation_Details"/>
-            <class name="com.sentient.poc.testcases.TC_06_Verify_User_Account_Balance_Under_Account_Transactions"/>
+            <class name="com.sentient.poc.testcases.TC_06_Verify_User_Account_Balance_Under_Account_Transactions"/>-->
 
         </classes>
     </test>
