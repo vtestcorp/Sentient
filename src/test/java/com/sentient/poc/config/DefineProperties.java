@@ -9,8 +9,8 @@ public class DefineProperties {
 
 	public DefineProperties(String setbrowser) {
 		if (setbrowser.equalsIgnoreCase("chrome")) {
-			 System.setProperty(chromeDriver, setChromeDriverPath);
-			//WebDriverManager.chromedriver().setup();
+			// System.setProperty(chromeDriver, setChromeDriverPath);
+			WebDriverManager.chromedriver().setup();
 		} else if (setbrowser.equalsIgnoreCase("firefox")) {
 			System.setProperty(geckoDriver, setGeckoDriverPath);
 		} else if (setbrowser.equalsIgnoreCase("internetexplorer")) {
@@ -37,7 +37,7 @@ public class DefineProperties {
 	}
 
 	public static final String chromeDriver = "webdriver.chrome.driver";
-	public static final String setChromeDriverPath = "src/test/java/com/sentient/poc/exeFiles/chromedriver.exe";
+	public static final String setChromeDriverPath = "src/test/exeFiles/chromedriver.exe";
 
 	public static final String geckoDriver = "webdriver.gecko.driver";
 	public static final String setGeckoDriverPath = "src/test/exeFiles/geckodriver.exe";
