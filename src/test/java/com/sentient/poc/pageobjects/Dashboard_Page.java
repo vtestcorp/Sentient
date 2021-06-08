@@ -69,7 +69,7 @@ public class Dashboard_Page {
 	@FindBy(xpath = "(//button/span[text()=' Cancel '])[2]")
 	public WebElement cancel;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/table")
+	@FindBy(xpath = "//div[@class='v-window-item v-window-item--active']//div//div[@class='container']")
 	private WebElement productTable;
 	
 	private List<WebElement> tableRows;
@@ -78,20 +78,31 @@ public class Dashboard_Page {
 	
 	
 	/**
-	 * This method is used to hover mouse on v-avatar to display list item
-	 * and perform click operation on Organisation tab
+	 * This method is used to hover mouse on Profile to display list item.
 	 * @throws InterruptedException
 	 * @throws IOException 
 	 */
-	public void mouseHover_On_Avatara() throws InterruptedException, IOException {
+	public void mouseHover_On_Profile() throws InterruptedException, IOException {
 		applyWait.waitforElementToBeDisplayed(avtara, DefineConstants.explicitWait_30);
 		avtara.click();
+		Screenshots.takeScreenshot(driver, "User should  hover Mouse on Profile");
+		test.log(Status.INFO, "User should  hover Mouse on Profile");
+		Log.info("User should  hover Mouse on Profile");	
+		Thread.sleep(3000);
+	}
+	
+	/**
+	 * This method is used to Perform clicked operation on Organisation tab.
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
+	public void click_On_Organisation_Tab() throws InterruptedException, IOException{
 		applyWait.waitforElementToBeDisplayed(organisation, DefineConstants.explicitWait_30);
 		organisation.click();
 		Screenshots.takeScreenshot(driver, "User clicked organisation_Tab ");
 		test.log(Status.INFO, "User clicked organisation_Tab");
 		Log.info("User clicked organisation_Tab");	
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 	}
 	
 	public void verifyManage_Group_Visibility() throws IOException {
@@ -118,6 +129,10 @@ public class Dashboard_Page {
 
 	}
 	
+	/**
+	 * This method used to verify visibility of Add Group Button.
+	 * @throws InterruptedException
+	 */	
 	public void verifyAdd_Group_Button_Visibility() throws IOException {
 		applyWait.waitforElementToBeDisplayed(addGroup, DefineConstants.explicitWait_30);
 		Assert.assertTrue(addGroup.isDisplayed());
@@ -127,9 +142,7 @@ public class Dashboard_Page {
 	}
 	
 	/**
-	 * This method used to click on Manage Group tab and click on Add Group
-	 * And fill group details{@value Group Name,Description,Function}
-	 * And click on Create Button
+	 * This method used to click on Add Group Button.
 	 * @throws InterruptedException
 	 */
 	
@@ -143,7 +156,13 @@ public class Dashboard_Page {
 		Log.info("User entered GroupName as "+ group_Name);		
    }
 	
-	public void enter_Dicription(String description) throws IOException, InterruptedException {
+	/**
+	 * This method is used to enter description in Description text box
+	 * @param description
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
+	public void enter_Discription(String description) throws IOException, InterruptedException {
 		applyWait.waitForElementToBeClickable(description_TextBox, DefineConstants.explicitWait_30);
 		description_TextBox.sendKeys(description);
 		Screenshots.takeScreenshot(driver, "User entered Discription as ");
@@ -152,10 +171,15 @@ public class Dashboard_Page {
 
     }
 	
+	/**
+	 * This method is used to select the function from drop down.
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	public void select_Fuctions_dropDown() throws IOException, InterruptedException {
 		applyWait.waitforElementToBeDisplayed(functions_dropDown, DefineConstants.explicitWait_30);
 		functions_dropDown.click();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		Checkbox.click();
 		Thread.sleep(3000);
 		textDesciption.click();
@@ -165,17 +189,24 @@ public class Dashboard_Page {
     }
 
 	
-	
+	/**
+	 * This method is used to click on create button of create new group.
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	public void click_On_Create_button() throws InterruptedException, IOException {
 		applyWait.waitforElementToBeDisplayed(createButton, DefineConstants.explicitWait_30);
 		createButton.click();
 		Screenshots.takeScreenshot(driver, "User clicked create button");
 		test.log(Status.INFO, "User clicked create button");
 		Log.info("User clicked create button");	
-		
-		
 	}
 	
+	
+	/**
+	 * This method is used to verify input value from table.
+	 * @param inputGroupName
+	 */
 	public void verifyInputValue(String inputGroupName) {
 		applyWait.waitForElementToBeClickable(productTable, DefineConstants.explicitWait_60);
 		tableRows = productTable.findElements(By.tagName("tr"));

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class Script_03_pageobjects {
+public class Account_Transactions_Page {
     private WebDriver driver;
     private WaitTypes applyWait;
     private ExtentTest test;
@@ -25,7 +25,7 @@ public class Script_03_pageobjects {
     String expected, actual;
 
 
-    public Script_03_pageobjects(WebDriver driver, ExtentTest test) {
+    public Account_Transactions_Page(WebDriver driver, ExtentTest test) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         this.applyWait = new WaitTypes(driver);
