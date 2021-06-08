@@ -131,7 +131,7 @@ public class BaseClass {
 
 		extent.flush();
 		driver.quit();
-	ZipUtil createZip = new ZipUtil("report",".//report//DetailedReport.zip");
+	//ZipUtil createZip = new ZipUtil("report",".//report//DetailedReport.zip");
 
 
 	}
