@@ -60,7 +60,7 @@ public class SignIn_Page {
 		applyWait.waitForElementToBeClickable(userID_TextBox, DefineConstants.explicitWait_30);
 		//javascriptClick.highLighterMethod(userID_TextBox);
 		userID_TextBox.sendKeys(input_userID);
-		Screenshots.takeScreenshot(driver, "User entered userID as "+ input_userID);
+		//Screenshots.takeScreenshot(driver, "User entered userID as "+ input_userID);
 		test.log(Status.INFO, "User entered userID as "+ input_userID);
 		Log.info("User entered email address as "+ input_userID);		
    }
@@ -68,7 +68,7 @@ public class SignIn_Page {
 	public void enter_Password(String input_Password) throws IOException, InterruptedException {
 		applyWait.waitForElementToBeClickable(password_TextBox, DefineConstants.explicitWait_30);
 		password_TextBox.sendKeys(input_Password);
-		Screenshots.takeScreenshot(driver, "User entered password as ");
+		//Screenshots.takeScreenshot(driver, "User entered password as ");
 		test.log(Status.INFO, "User entered password as "+ input_Password);
 		Log.info("User entered password as "+ input_Password);
 		Thread.sleep(5000);
@@ -78,7 +78,7 @@ public class SignIn_Page {
 	public void click_SignIn_Button() throws IOException, InterruptedException {
 		SignIn_Button.get(1).click();
 		Thread.sleep(5000);
-		Screenshots.takeScreenshot(driver, "User clicked login button");
+		//Screenshots.takeScreenshot(driver, "User clicked login button");
 		test.log(Status.INFO, "User clicked login button");
 		Log.info("User clicked login button");		
     }
@@ -87,7 +87,7 @@ public class SignIn_Page {
 	{
 		applyWait.waitforElementToBeDisplayed(organisation_Tab, DefineConstants.explicitWait_30);
 		organisation_Tab.click();
-		Screenshots.takeScreenshot(driver, "User clicked Organisation Tab");
+		//Screenshots.takeScreenshot(driver, "User clicked Organisation Tab");
 		test.log(Status.INFO, "User clicked login button");
 		Log.info("User clicked login button");
 	}
@@ -96,7 +96,7 @@ public class SignIn_Page {
 	{
 		applyWait.waitForElementToBeClickable(orgnisation_TextBox, DefineConstants.explicitWait_30);
 		orgnisation_TextBox.sendKeys(input_Organisation);
-		Screenshots.takeScreenshot(driver, "User entered Organisation ID ");
+		//Screenshots.takeScreenshot(driver, "User entered Organisation ID ");
 		test.log(Status.INFO, "User entered password as "+ input_Organisation);
 		Log.info("User entered password as "+ input_Organisation);
 	}

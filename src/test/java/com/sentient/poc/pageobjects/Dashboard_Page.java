@@ -85,7 +85,7 @@ public class Dashboard_Page {
 	public void mouseHover_On_Profile() throws InterruptedException, IOException {
 		applyWait.waitforElementToBeDisplayed(avtara, DefineConstants.explicitWait_30);
 		avtara.click();
-		Screenshots.takeScreenshot(driver, "User should  hover Mouse on Profile");
+		//Screenshots.takeScreenshot(driver, "User should  hover Mouse on Profile");
 		test.log(Status.INFO, "User should  hover Mouse on Profile");
 		Log.info("User should  hover Mouse on Profile");	
 		Thread.sleep(3000);
@@ -99,7 +99,7 @@ public class Dashboard_Page {
 	public void click_On_Organisation_Tab() throws InterruptedException, IOException{
 		applyWait.waitforElementToBeDisplayed(organisation, DefineConstants.explicitWait_30);
 		organisation.click();
-		Screenshots.takeScreenshot(driver, "User clicked organisation_Tab ");
+		//Screenshots.takeScreenshot(driver, "User clicked organisation_Tab ");
 		test.log(Status.INFO, "User clicked organisation_Tab");
 		Log.info("User clicked organisation_Tab");	
 		Thread.sleep(5000);
@@ -108,7 +108,7 @@ public class Dashboard_Page {
 	public void verifyManage_Group_Visibility() throws IOException {
 		applyWait.waitforElementToBeDisplayed(addGroup, DefineConstants.explicitWait_30);
 		Assert.assertTrue(manageGroup.isDisplayed());
-		Screenshots.takeScreenshot(driver, "Manage Group Button visible to user");
+		//Screenshots.takeScreenshot(driver, "Manage Group Button visible to user");
 		test.log(Status.INFO, "Manage Group Button visible to user");
 		Log.info("Manage Group Button visible to user");
 
@@ -122,7 +122,7 @@ public class Dashboard_Page {
 	public void click_On_Manage_Groups_tab() throws InterruptedException, IOException {
 		applyWait.waitforElementToBeDisplayed(manageGroup, DefineConstants.explicitWait_30);
 		manageGroup.click();
-		Screenshots.takeScreenshot(driver, "User clicked manageGroups button");
+		//Screenshots.takeScreenshot(driver, "User clicked manageGroups button");
 		test.log(Status.INFO, "User clicked manageGroups button");
 		Log.info("User clicked manageGroups button");	
 		Thread.sleep(3000);
@@ -136,7 +136,7 @@ public class Dashboard_Page {
 	public void verifyAdd_Group_Button_Visibility() throws IOException {
 		applyWait.waitforElementToBeDisplayed(addGroup, DefineConstants.explicitWait_30);
 		Assert.assertTrue(addGroup.isDisplayed());
-		Screenshots.takeScreenshot(driver, "Add Group Button visible to user");
+		//Screenshots.takeScreenshot(driver, "Add Group Button visible to user");
 		test.log(Status.INFO, "Add Group Button visible to user");
 		Log.info("Add Group Button visible to user");	
 	}
@@ -151,7 +151,7 @@ public class Dashboard_Page {
 		addGroup.click();
 		applyWait.waitForElementToBeClickable(groupName_TextBox, DefineConstants.explicitWait_30);
 		groupName_TextBox.sendKeys(group_Name);
-		Screenshots.takeScreenshot(driver, "User entered GroupName as "+ group_Name);
+		//Screenshots.takeScreenshot(driver, "User entered GroupName as "+ group_Name);
 		test.log(Status.INFO, "User entered GroupName as "+ group_Name);
 		Log.info("User entered GroupName as "+ group_Name);		
    }
@@ -165,7 +165,7 @@ public class Dashboard_Page {
 	public void enter_Discription(String description) throws IOException, InterruptedException {
 		applyWait.waitForElementToBeClickable(description_TextBox, DefineConstants.explicitWait_30);
 		description_TextBox.sendKeys(description);
-		Screenshots.takeScreenshot(driver, "User entered Discription as ");
+		//Screenshots.takeScreenshot(driver, "User entered Discription as ");
 		test.log(Status.INFO, "User entered Discription as "+ description);
 		Log.info("User entered Discription as "+ description);
 
@@ -183,7 +183,7 @@ public class Dashboard_Page {
 		Checkbox.click();
 		Thread.sleep(3000);
 		textDesciption.click();
-		Screenshots.takeScreenshot(driver, "User clicked functions dropdown");
+		//Screenshots.takeScreenshot(driver, "User clicked functions dropdown");
 		test.log(Status.INFO, "User clicked functions dropdown");
 		Log.info("User clicked functions dropdown");		
     }
@@ -197,7 +197,7 @@ public class Dashboard_Page {
 	public void click_On_Create_button() throws InterruptedException, IOException {
 		applyWait.waitforElementToBeDisplayed(createButton, DefineConstants.explicitWait_30);
 		createButton.click();
-		Screenshots.takeScreenshot(driver, "User clicked create button");
+		//Screenshots.takeScreenshot(driver, "User clicked create button");
 		test.log(Status.INFO, "User clicked create button");
 		Log.info("User clicked create button");	
 	}
@@ -222,8 +222,8 @@ public class Dashboard_Page {
 					test.log(Status.INFO, "value is " + cellText);
 					Log.info("value is " + cellText);
 					try {
-						Screenshots.takeScreenshot(driver, inputGroupName + " is verified");
-					} catch (IOException e) {
+						//Screenshots.takeScreenshot(driver, inputGroupName + " is verified");
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					test.log(Status.INFO, inputGroupName + " is verified");
@@ -232,8 +232,8 @@ public class Dashboard_Page {
 				else if (cellText.equals("No matching records found")) {
 					try {
 						javascriptClick.highLighterMethod(tableColums.get(column));
-						Screenshots.takeScreenshot(driver, inputGroupName + " is not found");
-					} catch (IOException e) {
+						//Screenshots.takeScreenshot(driver, inputGroupName + " is not found");
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					test.log(Status.INFO, inputGroupName + " is not found");

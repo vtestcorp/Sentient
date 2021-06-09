@@ -55,7 +55,7 @@ public class Organisation_Details_Page {
 	public void click_On_EditUser_Button() throws IOException, InterruptedException {
 		applyWait.waitforElementToBeDisplayed(editUser, DefineConstants.explicitWait_30);
 		editUser.click();
-		Screenshots.takeScreenshot(driver, "User clicked on Edit User");
+		//Screenshots.takeScreenshot(driver, "User clicked on Edit User");
 		test.log(Status.INFO, "User clicked on Edit User");
 		Log.info("User clicked on Edit User");	
         Thread.sleep(5000);
@@ -74,7 +74,7 @@ public class Organisation_Details_Page {
 		toClear.sendKeys(Keys.DELETE);
 		Thread.sleep(3000);
 		description.sendKeys(textToEnter);;
-		Screenshots.takeScreenshot(driver, "User enterd text in Description TextBox as "+ textToEnter);
+		//Screenshots.takeScreenshot(driver, "User enterd text in Description TextBox as "+ textToEnter);
 		test.log(Status.INFO, "User enterd text in Description TextBox as "+ textToEnter);
 		Log.info("User enterd text in Description TextBox as "+ textToEnter);		
         Thread.sleep(3000);
@@ -95,7 +95,7 @@ public class Organisation_Details_Page {
 		toClear.sendKeys(Keys.CONTROL + "a");
 		toClear.sendKeys(Keys.DELETE);
 		publicKey.sendKeys(keyToEnter);
-		Screenshots.takeScreenshot(driver, "User enterd Public Key as "+ keyToEnter);
+		//Screenshots.takeScreenshot(driver, "User enterd Public Key as "+ keyToEnter);
 		test.log(Status.INFO, "User enterd Public Key as "+ keyToEnter);
 		Log.info("User enterd Public Key as "+ keyToEnter);		
         Thread.sleep(3000);
@@ -110,7 +110,7 @@ public class Organisation_Details_Page {
 	public void click_On_Confirm_Changes() throws IOException, InterruptedException {
 		applyWait.waitforElementToBeDisplayed(publicKey, DefineConstants.explicitWait_30);
 		confirm_Changes_Button.click();
-		Screenshots.takeScreenshot(driver, "User clicked on Confirm Changes Button ");
+		//Screenshots.takeScreenshot(driver, "User clicked on Confirm Changes Button ");
 		test.log(Status.INFO, "User clicked on Confirm Changes Button ");
 		Log.info("User clicked on Confirm Changes Button ");		
         Thread.sleep(3000);

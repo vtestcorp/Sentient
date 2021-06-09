@@ -164,7 +164,7 @@ public class Organisation_Manage_Users_Page {
 
         applyWait.waitForElementToBeClickable(add_user_emailId, DefineConstants.explicitWait_30);
         add_user_emailId.sendKeys(input_userID);
-        Screenshots.takeScreenshot(driver, "User entered userID as " + input_userID);
+        //Screenshots.takeScreenshot(driver, "User entered userID as " + input_userID);
         test.log(Status.INFO, "User entered userID as " + input_userID);
         Log.info("User entered email address as " + input_userID);
     }
@@ -173,7 +173,7 @@ public class Organisation_Manage_Users_Page {
 
         applyWait.waitForElementToBeClickable(new_Password, DefineConstants.explicitWait_30);
         new_Password.sendKeys(input_userID);
-        Screenshots.takeScreenshot(driver, "User entered userID as " + input_userID);
+        //Screenshots.takeScreenshot(driver, "User entered userID as " + input_userID);
         test.log(Status.INFO, "User entered userID as " + input_userID);
         Log.info("User entered email address as " + input_userID);
     }
