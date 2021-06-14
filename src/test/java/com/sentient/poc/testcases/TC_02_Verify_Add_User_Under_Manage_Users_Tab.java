@@ -48,7 +48,7 @@ public class TC_02_Verify_Add_User_Under_Manage_Users_Tab extends BaseClass {
         script_01.wait_for_element(8000);
         //Verify User added successfully
        // Assert.assertEquals(script_01.verify_expectedUserId(), 1);
-        Assert.assertEquals(1, 1);
+        Assert.assertEquals(1, 0);
 
     }
 
