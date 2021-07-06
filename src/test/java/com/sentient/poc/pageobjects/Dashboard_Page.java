@@ -12,24 +12,23 @@ import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.sentient.poc.config.DefineConstants;
-import com.sentient.poc.helper.JavascriptClick;
-import com.sentient.poc.helper.Log;
-import com.sentient.poc.helper.Screenshots;
-import com.sentient.poc.helper.WaitTypes;
+import com.sentient.poc.config.defineConstants;
+import com.sentient.poc.helper.waitTypes;
+import com.sentient.poc.helper.javascriptClick;
+import com.sentient.poc.helper.log;
 
 public class Dashboard_Page {
 	private WebDriver driver;
-	private WaitTypes applyWait;
+	private waitTypes applyWait;
 	private ExtentTest test;
-	private JavascriptClick javascriptClick;
+	private com.sentient.poc.helper.javascriptClick javascriptClick;
 
 	public Dashboard_Page(WebDriver driver, ExtentTest test) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		this.applyWait = new WaitTypes(driver);
+		this.applyWait = new waitTypes(driver);
 		this.test = test;
-		javascriptClick = new JavascriptClick(driver);
+		javascriptClick = new javascriptClick(driver);
 
 	}
 
@@ -83,11 +82,11 @@ public class Dashboard_Page {
 	 * @throws IOException 
 	 */
 	public void mouseHover_On_Profile() throws InterruptedException, IOException {
-		applyWait.waitforElementToBeDisplayed(avtara, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(avtara, defineConstants.explicitWait_30);
 		avtara.click();
 		//Screenshots.takeScreenshot(driver, "User should  hover Mouse on Profile");
 		test.log(Status.INFO, "User should  hover Mouse on Profile");
-		Log.info("User should  hover Mouse on Profile");	
+		log.info("User should  hover Mouse on Profile");
 		Thread.sleep(3000);
 	}
 	
@@ -97,20 +96,20 @@ public class Dashboard_Page {
 	 * @throws IOException
 	 */
 	public void click_On_Organisation_Tab() throws InterruptedException, IOException{
-		applyWait.waitforElementToBeDisplayed(organisation, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(organisation, defineConstants.explicitWait_30);
 		organisation.click();
 		//Screenshots.takeScreenshot(driver, "User clicked organisation_Tab ");
 		test.log(Status.INFO, "User clicked organisation_Tab");
-		Log.info("User clicked organisation_Tab");	
+		log.info("User clicked organisation_Tab");
 		Thread.sleep(5000);
 	}
 	
 	public void verifyManage_Group_Visibility() throws IOException {
-		applyWait.waitforElementToBeDisplayed(addGroup, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(addGroup, defineConstants.explicitWait_30);
 		Assert.assertTrue(manageGroup.isDisplayed());
 		//Screenshots.takeScreenshot(driver, "Manage Group Button visible to user");
 		test.log(Status.INFO, "Manage Group Button visible to user");
-		Log.info("Manage Group Button visible to user");
+		log.info("Manage Group Button visible to user");
 
 	}
   
@@ -120,11 +119,11 @@ public class Dashboard_Page {
 	 * @throws IOException 
 	 */
 	public void click_On_Manage_Groups_tab() throws InterruptedException, IOException {
-		applyWait.waitforElementToBeDisplayed(manageGroup, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(manageGroup, defineConstants.explicitWait_30);
 		manageGroup.click();
 		//Screenshots.takeScreenshot(driver, "User clicked manageGroups button");
 		test.log(Status.INFO, "User clicked manageGroups button");
-		Log.info("User clicked manageGroups button");	
+		log.info("User clicked manageGroups button");
 		Thread.sleep(3000);
 
 	}
@@ -134,11 +133,11 @@ public class Dashboard_Page {
 	 * @throws InterruptedException
 	 */	
 	public void verifyAdd_Group_Button_Visibility() throws IOException {
-		applyWait.waitforElementToBeDisplayed(addGroup, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(addGroup, defineConstants.explicitWait_30);
 		Assert.assertTrue(addGroup.isDisplayed());
 		//Screenshots.takeScreenshot(driver, "Add Group Button visible to user");
 		test.log(Status.INFO, "Add Group Button visible to user");
-		Log.info("Add Group Button visible to user");	
+		log.info("Add Group Button visible to user");
 	}
 	
 	/**
@@ -147,13 +146,13 @@ public class Dashboard_Page {
 	 */
 	
 	public void click_On_ADD_Group_Button(String group_Name) throws IOException, InterruptedException {
-		applyWait.waitforElementToBeDisplayed(addGroup, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(addGroup, defineConstants.explicitWait_30);
 		addGroup.click();
-		applyWait.waitForElementToBeClickable(groupName_TextBox, DefineConstants.explicitWait_30);
+		applyWait.waitForElementToBeClickable(groupName_TextBox, defineConstants.explicitWait_30);
 		groupName_TextBox.sendKeys(group_Name);
 		//Screenshots.takeScreenshot(driver, "User entered GroupName as "+ group_Name);
 		test.log(Status.INFO, "User entered GroupName as "+ group_Name);
-		Log.info("User entered GroupName as "+ group_Name);		
+		log.info("User entered GroupName as "+ group_Name);
    }
 	
 	/**
@@ -163,11 +162,11 @@ public class Dashboard_Page {
 	 * @throws InterruptedException
 	 */
 	public void enter_Discription(String description) throws IOException, InterruptedException {
-		applyWait.waitForElementToBeClickable(description_TextBox, DefineConstants.explicitWait_30);
+		applyWait.waitForElementToBeClickable(description_TextBox, defineConstants.explicitWait_30);
 		description_TextBox.sendKeys(description);
 		//Screenshots.takeScreenshot(driver, "User entered Discription as ");
 		test.log(Status.INFO, "User entered Discription as "+ description);
-		Log.info("User entered Discription as "+ description);
+		log.info("User entered Discription as "+ description);
 
     }
 	
@@ -177,7 +176,7 @@ public class Dashboard_Page {
 	 * @throws InterruptedException
 	 */
 	public void select_Fuctions_dropDown() throws IOException, InterruptedException {
-		applyWait.waitforElementToBeDisplayed(functions_dropDown, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(functions_dropDown, defineConstants.explicitWait_30);
 		functions_dropDown.click();
 		Thread.sleep(5000);
 		Checkbox.click();
@@ -185,7 +184,7 @@ public class Dashboard_Page {
 		textDesciption.click();
 		//Screenshots.takeScreenshot(driver, "User clicked functions dropdown");
 		test.log(Status.INFO, "User clicked functions dropdown");
-		Log.info("User clicked functions dropdown");		
+		log.info("User clicked functions dropdown");
     }
 
 	
@@ -195,11 +194,11 @@ public class Dashboard_Page {
 	 * @throws IOException
 	 */
 	public void click_On_Create_button() throws InterruptedException, IOException {
-		applyWait.waitforElementToBeDisplayed(createButton, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(createButton, defineConstants.explicitWait_30);
 		createButton.click();
 		//Screenshots.takeScreenshot(driver, "User clicked create button");
 		test.log(Status.INFO, "User clicked create button");
-		Log.info("User clicked create button");	
+		log.info("User clicked create button");
 	}
 	
 	
@@ -208,7 +207,7 @@ public class Dashboard_Page {
 	 * @param inputGroupName
 	 */
 	public void verifyInputValue(String inputGroupName) {
-		applyWait.waitForElementToBeClickable(productTable, DefineConstants.explicitWait_60);
+		applyWait.waitForElementToBeClickable(productTable, defineConstants.explicitWait_60);
 		tableRows = productTable.findElements(By.tagName("tr"));
 
 		for (int row = 0; row < tableRows.size(); row++) {
@@ -220,14 +219,14 @@ public class Dashboard_Page {
 					javascriptClick.highLighterMethod(tableColums.get(column));
 					Assert.assertTrue(true, inputGroupName + " is verified");
 					test.log(Status.INFO, "value is " + cellText);
-					Log.info("value is " + cellText);
+					log.info("value is " + cellText);
 					try {
 						//Screenshots.takeScreenshot(driver, inputGroupName + " is verified");
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					test.log(Status.INFO, inputGroupName + " is verified");
-					Log.info(inputGroupName + " is verified");
+					log.info(inputGroupName + " is verified");
 				}
 				else if (cellText.equals("No matching records found")) {
 					try {
@@ -237,7 +236,7 @@ public class Dashboard_Page {
 						e.printStackTrace();
 					}
 					test.log(Status.INFO, inputGroupName + " is not found");
-					Log.info(inputGroupName + " is not found");
+					log.info(inputGroupName + " is not found");
 					Assert.assertTrue(false, inputGroupName + " is not found");
 				}
 			}

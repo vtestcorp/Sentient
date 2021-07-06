@@ -1,6 +1,6 @@
 package com.sentient.poc.helper;
 
-import com.sentient.poc.config.DefineConstants;
+import com.sentient.poc.config.defineConstants;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExcelUtils {
+public class excelUtils {
 
 	public static List<String> getExcelCellValue(String filePath, String columnHeader) throws IOException {
 		List<String> cellValues;
-		FileInputStream file = new FileInputStream(DefineConstants.PROJECT_PATH + filePath + ".xlsx");
+		FileInputStream file = new FileInputStream(defineConstants.PROJECT_PATH + filePath + ".xlsx");
 		Workbook workbook = new XSSFWorkbook(file);
 		Sheet sheet = workbook.getSheetAt(0);
 		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
@@ -56,7 +56,7 @@ public class ExcelUtils {
 	}
 	
 	public static void main(String[] ar) throws IOException {
-		List<String> lisvals = ExcelUtils.getExcelCellValue("Keywords", "Actions");
+		List<String> lisvals = excelUtils.getExcelCellValue("Keywords", "Actions");
 
 		System.out.println(lisvals);
 	}

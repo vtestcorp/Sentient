@@ -1,35 +1,27 @@
 package com.sentient.poc.pageobjects;
 
-import java.io.IOException;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.sentient.poc.config.DefineConstants;
-import com.sentient.poc.helper.JavascriptClick;
-import com.sentient.poc.helper.Log;
-import com.sentient.poc.helper.Screenshots;
-import com.sentient.poc.helper.WaitTypes;
+import com.sentient.poc.helper.javascriptClick;
+import com.sentient.poc.helper.waitTypes;
 
 public class Organisation_Page {
 
 	private WebDriver driver;
-	private WaitTypes applyWait;
+	private waitTypes applyWait;
 	private ExtentTest test;
-	private JavascriptClick javascriptClick;
+	private com.sentient.poc.helper.javascriptClick javascriptClick;
 
 	public Organisation_Page(WebDriver driver, ExtentTest test) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		this.applyWait = new WaitTypes(driver);
+		this.applyWait = new waitTypes(driver);
 		this.test = test;
-		javascriptClick = new JavascriptClick(driver);
+		javascriptClick = new javascriptClick(driver);
 
 	}
 

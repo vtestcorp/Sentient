@@ -11,24 +11,21 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.sentient.poc.config.DefineConstants;
-import com.sentient.poc.helper.JavascriptClick;
-import com.sentient.poc.helper.Log;
-import com.sentient.poc.helper.Screenshots;
-import com.sentient.poc.helper.WaitTypes;
+import com.sentient.poc.config.*;
+import com.sentient.poc.helper.*;
 
 public class Organisation_Details_Page {
 	private WebDriver driver;
-	private WaitTypes applyWait;
+	private waitTypes applyWait;
 	private ExtentTest test;
-	private JavascriptClick javascriptClick;
+	private com.sentient.poc.helper.javascriptClick javascriptClick;
 
 	public Organisation_Details_Page(WebDriver driver, ExtentTest test) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		this.applyWait = new WaitTypes(driver);
+		this.applyWait = new waitTypes(driver);
 		this.test = test;
-		javascriptClick = new JavascriptClick(driver);
+		javascriptClick = new javascriptClick(driver);
 
 	}
 
@@ -53,11 +50,11 @@ public class Organisation_Details_Page {
 	 * @throws InterruptedException
 	 */
 	public void click_On_EditUser_Button() throws IOException, InterruptedException {
-		applyWait.waitforElementToBeDisplayed(editUser, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(editUser, defineConstants.explicitWait_30);
 		editUser.click();
 		//Screenshots.takeScreenshot(driver, "User clicked on Edit User");
 		test.log(Status.INFO, "User clicked on Edit User");
-		Log.info("User clicked on Edit User");	
+		log.info("User clicked on Edit User");
         Thread.sleep(5000);
 	}
 	
@@ -68,7 +65,7 @@ public class Organisation_Details_Page {
 	 * @throws InterruptedException
 	 */
 	public void enterText_In_Description_textBox(String textToEnter) throws IOException, InterruptedException {
-		applyWait.waitforElementToBeDisplayed(description, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(description, defineConstants.explicitWait_30);
 		WebElement toClear = driver.findElement(By.xpath("//div[@class='row mt-0 mt-md-4']//textarea"));
 		toClear.sendKeys(Keys.CONTROL + "a");
 		toClear.sendKeys(Keys.DELETE);
@@ -76,7 +73,7 @@ public class Organisation_Details_Page {
 		description.sendKeys(textToEnter);;
 		//Screenshots.takeScreenshot(driver, "User enterd text in Description TextBox as "+ textToEnter);
 		test.log(Status.INFO, "User enterd text in Description TextBox as "+ textToEnter);
-		Log.info("User enterd text in Description TextBox as "+ textToEnter);		
+		log.info("User enterd text in Description TextBox as "+ textToEnter);
         Thread.sleep(3000);
 
 
@@ -90,14 +87,14 @@ public class Organisation_Details_Page {
 	 */
 	
 	public void enterKey_On_Public_Key_textBox(String keyToEnter) throws IOException, InterruptedException {
-		applyWait.waitforElementToBeDisplayed(publicKey, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(publicKey, defineConstants.explicitWait_30);
 		WebElement toClear = driver.findElement(By.xpath("(//div[@class='v-input__control']//textarea)[2]"));
 		toClear.sendKeys(Keys.CONTROL + "a");
 		toClear.sendKeys(Keys.DELETE);
 		publicKey.sendKeys(keyToEnter);
 		//Screenshots.takeScreenshot(driver, "User enterd Public Key as "+ keyToEnter);
 		test.log(Status.INFO, "User enterd Public Key as "+ keyToEnter);
-		Log.info("User enterd Public Key as "+ keyToEnter);		
+		log.info("User enterd Public Key as "+ keyToEnter);
         Thread.sleep(3000);
 	}
 	
@@ -108,11 +105,11 @@ public class Organisation_Details_Page {
 	 * @throws InterruptedException
 	 */
 	public void click_On_Confirm_Changes() throws IOException, InterruptedException {
-		applyWait.waitforElementToBeDisplayed(publicKey, DefineConstants.explicitWait_30);
+		applyWait.waitforElementToBeDisplayed(publicKey, defineConstants.explicitWait_30);
 		confirm_Changes_Button.click();
 		//Screenshots.takeScreenshot(driver, "User clicked on Confirm Changes Button ");
 		test.log(Status.INFO, "User clicked on Confirm Changes Button ");
-		Log.info("User clicked on Confirm Changes Button ");		
+		log.info("User clicked on Confirm Changes Button ");
         Thread.sleep(3000);
 
 	}

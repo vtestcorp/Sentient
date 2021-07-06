@@ -7,7 +7,7 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class JsonUtils {
+public class jsonUtils {
 
 	private static FileWriter file;
 	private static FileReader reader;

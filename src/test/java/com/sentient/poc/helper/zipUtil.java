@@ -9,14 +9,17 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public class ZipUtil {
+/**
+ * Created by manisha.jadhav on 12-02-2020.
+ * In helperMethods
+ */
+public class zipUtil {
 
 	private List<String> fileList;
 	private static String OUTPUT_ZIP_FILE;
 	private static String SOURCE_FOLDER;
 
-	@SuppressWarnings("static-access")
-	public ZipUtil(String srcFolder, String outputZipFile) throws IOException {
+	public zipUtil(String srcFolder, String outputZipFile) throws IOException {
 		fileList = new ArrayList<String>();
 		this.SOURCE_FOLDER = srcFolder;
 		this.OUTPUT_ZIP_FILE = outputZipFile;
@@ -27,8 +30,7 @@ public class ZipUtil {
 	/**
 	 * Zip it
 	 *
-	 * @param zipFile
-	 *            output ZIP file location
+	 * @param zipFile output ZIP file location
 	 */
 	public void zipIt(String zipFile) {
 		byte[] buffer = new byte[1024];
@@ -67,10 +69,10 @@ public class ZipUtil {
 	}
 
 	/**
-	 * Traverse a directory and get all files, and add the file into fileList
+	 * Traverse a directory and get all files,
+	 * and add the file into fileList
 	 *
-	 * @param node
-	 *            file or directory
+	 * @param node file or directory
 	 */
 	public void generateFileList(File node) {
 		// Add file only
@@ -89,8 +91,7 @@ public class ZipUtil {
 	/**
 	 * Format the file path for zip
 	 *
-	 * @param file
-	 *            file path
+	 * @param file file path
 	 * @return Formatted file path
 	 */
 	private String generateZipEntry(String file) {

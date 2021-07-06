@@ -6,26 +6,28 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.sentient.poc.config.DefineProperties;
-import com.sentient.poc.helper.Screenshots;
-import com.sentient.poc.helper.ZipUtil;
+import com.sentient.poc.helper.zipUtil;
+import com.sentient.poc.config.*;
+import com.sentient.poc.helper.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.ISuite;
+import org.testng.ISuiteResult;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.TimeZone;
 
-public class BaseClass {
 
+public class baseClass {
     public static String atest = "";
     public String space = "", hypen = "";
     int invalidLinksCount = 0;
@@ -35,12 +37,16 @@ public class BaseClass {
     public static ExtentReports extent;
     public static ExtentHtmlReporter htmlReporter;
     public static String DownloadFilepath, folder, basefold;
-    public static int count;
+    public static int count, Passcount, FailedCount;
+    public static String Report_Path = null;
+    public String Report_Timestamp;
 
-    @SuppressWarnings("deprecation")
+
     @Parameters({"browserType"})
+
     @BeforeClass
     public void setUp(String browser) throws Exception {
+
         int i = 0;
         while (i < 45) {
             space += " ";
@@ -50,27 +56,16 @@ public class BaseClass {
             i++;
         }
         count += 1;
-        SimpleDateFormat df = new SimpleDateFormat("_d-M-yyyy_h-mm-ss");
-        df.setTimeZone(TimeZone.getTimeZone("Canada/Eastern"));
-        // Initialize Extent Report required static fields.
-        folder = df.format(new Date());
-        basefold = System.getProperty("user.dir") + "\\screenshot\\" + folder + "\\";
-        System.out.println(System.getProperty("user.dir"));
-        htmlReporter = com.sentient.poc.config.ExtentReports.createInstance("report/extent.html");
+        htmlReporter = com.sentient.poc.config.extentReports.createInstance("report/extent.html");
 
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         Thread.sleep(1000);
         if (browser.equalsIgnoreCase("chrome")) {
-            // defineProperties defineBrowser = new defineProperties(browser);
+            //  defineProperties defineBrowser = new defineProperties(browser);
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            /*
-             * options.addArguments("excludeSwitches",
-             * "ignore-certificate-errors"); options.addArguments("headless");
-             * options.addArguments("window-size=0x0");
-             * options.addArguments("disable-infobars");
-             */
+            options.addArguments("disable-infobars");
             options.addArguments("--start-maximized");
             options.addArguments("window-size=1280,1024");
             String path = System.getProperty("user.dir");
@@ -80,17 +75,16 @@ public class BaseClass {
             chromePrefs.put("download.default_directory", DownloadFilepath);
             options.setExperimentalOption("prefs", chromePrefs);
             driver = new ChromeDriver(options);
-            driver.manage().window().maximize();
+            //  driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("firefox")) {
-            // DefineProperties defineBrowser = new DefineProperties(browser);
+            defineProperties defineBrowser = new defineProperties(browser);
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("internetexplorer")) {
-            DefineProperties defineBrowser = new DefineProperties(browser);
+            defineProperties defineBrowser = new defineProperties(browser);
             driver = new InternetExplorerDriver(defineBrowser.setIECapability());
             driver.manage().window().maximize();
-            // driver = new RemoteWebDriver(new URL(url),
-            // defineBrowser.SauceLabCapabilities());
+            //   driver = new RemoteWebDriver(new URL(url), defineBrowser.SauceLabCapabilities());
         }
         extent.setSystemInfo("Selenium Version", "3");
         extent.setSystemInfo("Environment", "Testing");
@@ -100,46 +94,74 @@ public class BaseClass {
         return driver;
     }
 
-    @BeforeTest
-    public void classInstitiate() {
-        // ExcelUtils read = new ExcelUtils();
-        // Dashboard dashboard = new Dashboard(driver, test);
-        // Contacts contact = new Contacts(driver, test);
-        // ManagedContacts managedContacts = new ManagedContacts(driver, test);
-        // CreateContacts createContacts = new CreateContacts(driver, test);
-        // defineConstants defineConstant = new defineConstants();
-    }
-
     @AfterMethod(timeOut = 10000L, alwaysRun = true)
     public void checkResult(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
-            atest += "    " + count + "     " + result.getTestClass().getName() + "." + result.getName() + " - Failed\n";
             test.log(Status.FAIL, MarkupHelper.createLabel(result.getName() + " Test Case FAILED", ExtentColor.RED));
             test.fail(result.getThrowable());
-            test.addScreenCaptureFromPath(Screenshots.takeScreenshot(driver, result.getMethod().getMethodName()));
+            test.addScreenCaptureFromPath(screenshots.takeScreenshot(driver, result.getMethod().getMethodName()));
         } else if (result.getStatus() == ITestResult.SUCCESS) {
-            atest += "    " + count + "     " + result.getTestClass().getName() + "." + result.getName() + " - Passed\n";
             test.log(Status.PASS, MarkupHelper.createLabel(result.getName() + " Test Case PASSED", ExtentColor.GREEN));
         } else {
-            atest += "    " + count + "     " + result.getTestClass().getName() + "." + result.getName() + " - Skipped\n";
             test.log(Status.SKIP, MarkupHelper.createLabel(result.getName() + " Test Case SKIPPED", ExtentColor.YELLOW));
         }
+        extent.flush();
     }
 
     @AfterClass
-    public void tearDown() throws IOException {
-
-        extent.flush();
+    public void tearDown() {
         driver.quit();
-        ZipUtil createZip = new ZipUtil("report", ".//report//DetailedReport.zip");
-
-
+        File dir = new File(baseClass.DownloadFilepath);
+        File[] files = dir.listFiles();
+        for (File file : files) {
+            System.out.println("Deleted filename :"+ file.getName());
+            file.delete();
+        }
     }
 
 
     @AfterSuite
-    public void openReport() {
-//		SwitchWindow.openReportTab(driver);
-//		driver.get(DefineConstants.PROJECT_PATH + "report" + "/" + "extent.html");
+    public void afterSuite(ITestContext context) {
+        printSuiteResults(context.getSuite());
+    }
+
+    private void printSuiteResults(ISuite suite) {
+        Collection<ISuiteResult> suiteResults = suite.getResults().values();
+        for (ISuiteResult suiteResult : suiteResults) {
+            printAllResults(suiteResult.getTestContext());
+        }
+    }
+
+    private void printAllResults(ITestContext context) {
+        int passcount, failedCount, skipcount;
+        System.err.println("Printing tests that passed.");
+        printAllResults(context.getPassedTests().getAllResults());
+        passcount = context.getPassedTests().getAllResults().size();
+        System.err.println("Printing tests that failed.");
+        printAllResults(context.getFailedTests().getAllResults());
+        failedCount = context.getFailedTests().getAllResults().size();
+        printAllResults(context.getSkippedTests().getAllResults());
+        skipcount = context.getSkippedTests().getAllResults().size();
+        zip(passcount, failedCount, skipcount);
+    }
+
+    private void printAllResults(Collection<ITestResult> results) {
+        for (ITestResult result : results) {
+            printResult(result);
+        }
+    }
+
+    private void printResult(ITestResult result) {
+        //   System.out.println(result.getStatus());
+        // zip(result.getStatus());
+    }
+
+    public void zip(int Status, int failedCount, int skipcount) {
+        try {
+            zipUtil createZip = new zipUtil("report", ".//report//DetailedReport.zip");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

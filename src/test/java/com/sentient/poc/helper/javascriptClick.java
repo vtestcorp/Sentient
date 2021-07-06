@@ -4,12 +4,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class JavascriptClick {
+public class javascriptClick {
 
 	private WebDriver driver;
 	private JavascriptExecutor javascriptExecutor;
 
-	public JavascriptClick(WebDriver driver) {
+	public javascriptClick(WebDriver driver) {
 		this.driver = driver;
 
 	}

@@ -6,13 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-public class DropDown {
+public class dropDown {
 
 	WebDriver driver;
 	Select select;
 	Actions actions;
 
-	public DropDown(WebDriver driver) {
+	public dropDown(WebDriver driver) {
 		this.driver = driver;
 	}
 

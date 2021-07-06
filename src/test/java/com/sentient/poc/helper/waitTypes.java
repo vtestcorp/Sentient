@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WaitTypes {
+public class waitTypes {
 
 	WebDriver driver;
 	WebDriverWait wait;
 
-	public WaitTypes(WebDriver driver) {
+	public waitTypes(WebDriver driver) {
 		this.driver = driver;
 	}
 

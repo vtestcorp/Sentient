@@ -5,7 +5,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
-public class Keyboard {
+public class keyboard {
 
 	private static Robot r;
 

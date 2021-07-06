@@ -1,11 +1,11 @@
 package com.sentient.poc.listeners;
 
-import com.sentient.poc.base.BaseClass;
+import com.sentient.poc.base.baseClass;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.sentient.poc.helper.Screenshots;
+import com.sentient.poc.helper.screenshots;
 import org.openqa.selenium.WebDriver;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
@@ -34,23 +34,23 @@ public class RetryAnalyser implements IRetryAnalyzer {
 		String URL;
 		System.out.println("Retry failed test... :(");
 		Object currentClass = result.getInstance();
-		WebDriver webDriver = ((BaseClass) currentClass).getDriver();
+		WebDriver webDriver = ((baseClass) currentClass).getDriver();
 
 		// To Ignore Re-running Specified Tests
 		this.testName = result.getMethod().getMethodName();
 		for (int i = 0; i < retryLimit; i++) {
 			int j = i++;
 			try {
-				((BaseClass) currentClass).test.createNode("Retry Analyser ", "Retrying the test cases" + j + "time")
+				((baseClass) currentClass).test.createNode("Retry Analyser ", "Retrying the test cases" + j + "time")
 						.log(Status.FAIL,
 								MarkupHelper.createLabel("Test cases retried" + j + "times ", ExtentColor.ORANGE))
-						.addScreenCaptureFromPath(Screenshots.retryTakeScreenshot(webDriver, this.testName));
+						.addScreenCaptureFromPath(screenshots.retryTakeScreenshot(webDriver, this.testName));
 			} catch (Exception e) {
 
 			}
 			if (attemptCount < retryLimit) {
 				// test1.createNode("retrying");
-				((BaseClass) currentClass).extent.removeTest(((BaseClass) currentClass).test);
+				((baseClass) currentClass).extent.removeTest(((baseClass) currentClass).test);
 				// ((baseClass)
 				// currentClass).test.createNode(String.valueOf(test1));
 				if (webDriver != null) {

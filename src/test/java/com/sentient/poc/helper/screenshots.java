@@ -1,6 +1,5 @@
 package com.sentient.poc.helper;
 
-import com.aventstack.extentreports.ExtentTest;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -12,19 +11,10 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
-public class Screenshots {
-
-	public ExtentTest test;
-	public WebDriver driver;
-
-	public Screenshots(WebDriver driver) {
-		this.driver = driver;
-	}
+public class screenshots {
 
 	public static String takeScreenshot(WebDriver driver, String fileName) throws IOException {
-		// DataGenerator generate = new DataGenerator();
-
-		fileName = fileName + ".png";
+			fileName = fileName + ".png";
 		String directory = "report/";
 		File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(sourceFile, new File(directory + fileName));

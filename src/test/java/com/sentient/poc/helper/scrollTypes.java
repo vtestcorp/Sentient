@@ -6,11 +6,11 @@ import org.openqa.selenium.WebElement;
 
 import java.awt.*;
 
-public class ScrollTypes {
+public class scrollTypes {
 
 	WebDriver driver;
 
-	public ScrollTypes(WebDriver driver) {
+	public scrollTypes(WebDriver driver) {
 		this.driver = driver;
 	}
 

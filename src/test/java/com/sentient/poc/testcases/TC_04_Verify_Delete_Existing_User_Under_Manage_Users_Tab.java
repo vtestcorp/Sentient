@@ -1,8 +1,8 @@
 package com.sentient.poc.testcases;
 
-import com.sentient.poc.base.BaseClass;
-import com.sentient.poc.config.DefineConstants;
-import com.sentient.poc.helper.JsonUtils;
+import com.sentient.poc.base.baseClass;
+import com.sentient.poc.config.defineConstants;
+import com.sentient.poc.helper.jsonUtils;
 import com.sentient.poc.pageobjects.Organisation_Manage_Users_Page;
 import com.sentient.poc.pageobjects.SignIn_Page;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class TC_04_Verify_Delete_Existing_User_Under_Manage_Users_Tab extends BaseClass {
+public class TC_04_Verify_Delete_Existing_User_Under_Manage_Users_Tab extends baseClass {
     SignIn_Page signIn_Page;
     Organisation_Manage_Users_Page script_01;
 
@@ -23,12 +23,12 @@ public class TC_04_Verify_Delete_Existing_User_Under_Manage_Users_Tab extends Ba
         signIn_Page = new SignIn_Page(driver, test);
         script_01 = new Organisation_Manage_Users_Page(driver, test);
 
-        driver.get(DefineConstants.SENTIENT_URL);
+        driver.get(defineConstants.SENTIENT_URL);
         signIn_Page.click_Organistaion_Tab();
         //Login with valid username and Password
-        signIn_Page.enter_Orgnisation(JsonUtils.getData(DefineConstants.Organisation_SignIn, "Organisation"));
-        signIn_Page.enter_UserID(JsonUtils.getData(DefineConstants.Organisation_SignIn, "Username"));
-        signIn_Page.enter_Password(JsonUtils.getData(DefineConstants.Organisation_SignIn, "Password"));
+        signIn_Page.enter_Orgnisation(jsonUtils.getData(defineConstants.Organisation_SignIn, "Organisation"));
+        signIn_Page.enter_UserID(jsonUtils.getData(defineConstants.Organisation_SignIn, "Username"));
+        signIn_Page.enter_Password(jsonUtils.getData(defineConstants.Organisation_SignIn, "Password"));
         script_01.wait_for_element(3000);
         signIn_Page.click_SignIn_Button();
         script_01.wait_for_element(5000);
@@ -41,7 +41,7 @@ public class TC_04_Verify_Delete_Existing_User_Under_Manage_Users_Tab extends Ba
         script_01.click_on_delete_selected_user();
         List<WebElement> after = script_01.getUserEmailList();
 
-        String email = JsonUtils.getData(DefineConstants.Add_User, "Email");
+        String email = jsonUtils.getData(defineConstants.Add_User, "Email");
         boolean containsEmail = false;
 
         for (WebElement webElement : after) {

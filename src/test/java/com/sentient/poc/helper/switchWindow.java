@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-public class SwitchWindow {
+public class switchWindow {
 
 	WebDriver driver;
 	String primaryWindowHandle;
 	String subWindowHandler = null;
 
-	public SwitchWindow(WebDriver driver) {
+	public switchWindow(WebDriver driver) {
 		this.driver = driver;
 		this.primaryWindowHandle = driver.getWindowHandle();
 	}

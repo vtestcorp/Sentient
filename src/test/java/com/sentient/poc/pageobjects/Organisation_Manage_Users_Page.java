@@ -1,36 +1,29 @@
 package com.sentient.poc.pageobjects;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 
 
 import com.sentient.poc.helper.*;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-
-import com.sentient.poc.config.DefineConstants;
-import org.openqa.selenium.support.ui.Select;
-
-import javax.swing.*;
+import com.sentient.poc.config.*;
 
 public class Organisation_Manage_Users_Page {
     private WebDriver driver;
-    private WaitTypes applyWait;
+    private waitTypes applyWait;
     private ExtentTest test;
-    private SwitchWindow switchToWindow;
-    private Keyboard keyboard;
-    private DropDown dropDown;
+    private switchWindow switchToWindow;
+    private com.sentient.poc.helper.keyboard keyboard;
+    private com.sentient.poc.helper.dropDown dropDown;
     public Actions actions;
     public String expectedResult;
     public Iterator it;
@@ -42,11 +35,11 @@ public class Organisation_Manage_Users_Page {
     public Organisation_Manage_Users_Page(WebDriver driver, ExtentTest test) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        this.applyWait = new WaitTypes(driver);
+        this.applyWait = new waitTypes(driver);
         this.test = test;
-        new JavascriptClick(driver);
-        switchToWindow = new SwitchWindow(driver);
-        keyboard = new Keyboard();
+        new javascriptClick(driver);
+        switchToWindow = new switchWindow(driver);
+        keyboard = new keyboard();
     }
 
 
@@ -100,7 +93,7 @@ public class Organisation_Manage_Users_Page {
     private WebElement click_on_delete;
 
     public void select_existing_user_in_list() {
-        String email=JsonUtils.getData(DefineConstants.Add_User, "Email");
+        String email= jsonUtils.getData(defineConstants.Add_User, "Email");
         WebElement select_existing_user=driver.findElement(By.xpath("//td[contains(text(),'"+email+"')]/parent::tr/td[@class='text-start']/div[@class='v-simple-checkbox']"));
         select_existing_user.click();
     }
@@ -124,10 +117,10 @@ public class Organisation_Manage_Users_Page {
 
     public int verify_user_deleted()
     {
-        String email=JsonUtils.getData(DefineConstants.Add_User, "Email");
+        String email= jsonUtils.getData(defineConstants.Add_User, "Email");
         WebElement expected = driver.findElement(By.xpath("//td[contains(text(),'"+email+"')]"));
         expetedUser.size();
-        if (expected.getText().equals(JsonUtils.getData(DefineConstants.Add_User, "Email"))) {
+        if (expected.getText().equals(jsonUtils.getData(defineConstants.Add_User, "Email"))) {
             System.out.println("Expected Result");
             flag = 0;
 //            }
@@ -139,10 +132,10 @@ public class Organisation_Manage_Users_Page {
 
 
     public int verify_expectedUserId() {
-        String email=JsonUtils.getData(DefineConstants.Add_User, "Email");
+        String email= jsonUtils.getData(defineConstants.Add_User, "Email");
         WebElement expected = driver.findElement(By.xpath("//td[contains(text(),'"+email+"')]"));
         System.out.println(expected.getText());
-        if (expected.getText().equals(JsonUtils.getData(DefineConstants.Add_User, "Email"))) {
+        if (expected.getText().equals(jsonUtils.getData(defineConstants.Add_User, "Email"))) {
             System.out.println("Expected Result");
             flag = 1;
 //            }
@@ -162,20 +155,20 @@ public class Organisation_Manage_Users_Page {
 
     public void add_User_details(String input_userID) throws IOException, InterruptedException {
 
-        applyWait.waitForElementToBeClickable(add_user_emailId, DefineConstants.explicitWait_30);
+        applyWait.waitForElementToBeClickable(add_user_emailId, defineConstants.explicitWait_30);
         add_user_emailId.sendKeys(input_userID);
         //Screenshots.takeScreenshot(driver, "User entered userID as " + input_userID);
         test.log(Status.INFO, "User entered userID as " + input_userID);
-        Log.info("User entered email address as " + input_userID);
+        log.info("User entered email address as " + input_userID);
     }
 
     public void new_Password_details(String input_userID) throws IOException, InterruptedException {
 
-        applyWait.waitForElementToBeClickable(new_Password, DefineConstants.explicitWait_30);
+        applyWait.waitForElementToBeClickable(new_Password, defineConstants.explicitWait_30);
         new_Password.sendKeys(input_userID);
         //Screenshots.takeScreenshot(driver, "User entered userID as " + input_userID);
         test.log(Status.INFO, "User entered userID as " + input_userID);
-        Log.info("User entered email address as " + input_userID);
+        log.info("User entered email address as " + input_userID);
     }
 
     public void select_group() throws InterruptedException {

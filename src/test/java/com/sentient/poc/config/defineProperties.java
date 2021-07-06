@@ -4,10 +4,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-@SuppressWarnings("all")
-public class DefineProperties {
 
-	public DefineProperties(String setbrowser) {
+@SuppressWarnings("ALL")
+public class defineProperties {
+
+	public defineProperties(String setbrowser) {
 		if (setbrowser.equalsIgnoreCase("chrome")) {
 			// System.setProperty(chromeDriver, setChromeDriverPath);
 			WebDriverManager.chromedriver().setup();

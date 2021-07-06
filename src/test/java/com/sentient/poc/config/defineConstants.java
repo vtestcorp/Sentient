@@ -1,6 +1,6 @@
 package com.sentient.poc.config;
 
-public class DefineConstants {
+public class defineConstants {
     // Test data file Path
     public static final String Path_TestData = "";
 

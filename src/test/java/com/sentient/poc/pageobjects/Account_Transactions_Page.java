@@ -13,11 +13,11 @@ import java.util.Iterator;
 
 public class Account_Transactions_Page {
     private WebDriver driver;
-    private WaitTypes applyWait;
+    private waitTypes applyWait;
     private ExtentTest test;
-    private SwitchWindow switchToWindow;
-    private Keyboard keyboard;
-    private DropDown dropDown;
+    private switchWindow switchToWindow;
+    private com.sentient.poc.helper.keyboard keyboard;
+    private com.sentient.poc.helper.dropDown dropDown;
     public Actions actions;
     public String expectedResult;
     public Iterator it;
@@ -28,11 +28,11 @@ public class Account_Transactions_Page {
     public Account_Transactions_Page(WebDriver driver, ExtentTest test) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        this.applyWait = new WaitTypes(driver);
+        this.applyWait = new waitTypes(driver);
         this.test = test;
-        new JavascriptClick(driver);
-        switchToWindow = new SwitchWindow(driver);
-        keyboard = new Keyboard();
+        new javascriptClick(driver);
+        switchToWindow = new switchWindow(driver);
+        keyboard = new keyboard();
     }
 
     @FindBy(css = ".user-profile.v-list-item.v-list-item--link.theme--light")
