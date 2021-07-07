@@ -36,10 +36,10 @@ public class TC_02_Verify_Add_User_Under_Manage_Users_Tab extends baseClass {
         script_01.wait_for_element(6000);
         script_01.add_New_User();
         script_01.add_User_details(jsonUtils.getData(defineConstants.Add_User, "Email"));
-       /* script_01.select_group();
+        script_01.select_group();
         script_01.wait_for_element(5000);
         script_01.select_user();
-        script_01.wait_for_element(3000);*/
+        script_01.wait_for_element(3000);
         script_01.set_password_option();
         script_01.wait_for_element(5000);
         script_01.new_Password_details(jsonUtils.getData(defineConstants.Add_User, "Password"));
